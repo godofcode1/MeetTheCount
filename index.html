@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeetTheCount</title>
+    <!-- Google Fonts Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700;800;900&family=Roboto+Flex:opsz,wght@8..144,700;8..144,800;8..144,900&family=Roboto:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #000000;
+            --card-border: #ffffff;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Noto Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Pure Lines & Geometric Forms Layered Behind the Main Box */
+        .geometric-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .geometric-bg svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2.5rem;
+            max-width: 900px;
+            width: 90%;
+            background: #000000;
+            border: 2px solid #ffffff;
+            box-shadow: 12px 12px 0px #ffffff;
+        }
+
+        .badge {
+            display: inline-block;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #000000;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 8px 18px;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Roboto Flex', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            color: #ffffff;
+        }
+
+        p.subtitle {
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 800;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            padding: 1.5rem 1rem;
+            min-width: 140px;
+            position: relative;
+            box-shadow: 5px 5px 0px #ffffff;
+        }
+
+        .number {
+            font-family: 'Roboto Flex', sans-serif;
+            font-weight: 900;
+            font-size: 3.8rem;
+            line-height: 1;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+            min-height: 3.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .number.scrambling {
+            color: #000000;
+            background: #ffffff;
+        }
+
+        .label {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            border-top: 1px solid #ffffff;
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-text {
+            margin-top: 3rem;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .time-box { min-width: 90px; padding: 1rem 0.5rem; }
+            .number { font-size: 2.2rem; min-height: 2.2rem; }
+            .label { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Layer: Strictly Vector Lines and Geometric Shapes behind the box -->
+    <div class="geometric-bg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+            <g stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.25">
+                <!-- Grid & Diagonal Blueprint Lines -->
+                <line x1="0" y1="100" x2="1920" y2="100" stroke-dasharray="8 8" />
+                <line x1="0" y1="980" x2="1920" y2="980" stroke-dasharray="8 8" />
+                <line x1="200" y1="0" x2="200" y2="1080" stroke-dasharray="8 8" />
+                <line x1="1720" y1="0" x2="1720" y2="1080" stroke-dasharray="8 8" />
+                
+                <line x1="0" y1="0" x2="1920" y2="1080" />
+                <line x1="1920" y1="0" x2="0" y2="1080" />
+
+                <!-- Top Left Geometric Composition -->
+                <rect x="80" y="80" width="220" height="220" />
+                <circle cx="190" cy="190" r="80" />
+                <polygon points="190,110 260,240 120,240" />
+
+                <!-- Bottom Right Geometric Composition -->
+                <rect x="1620" y="780" width="220" height="220" />
+                <circle cx="1730" cy="890" r="80" />
+                <polygon points="1730,810 1800,940 1660,940" />
+
+                <!-- Top Right Hexagonal Mesh -->
+                <polygon points="1700,100 1760,135 1760,205 1700,240 1640,205 1640,135" />
+                <polygon points="1700,130 1740,153 1740,197 1700,220 1660,197 1660,153" />
+
+                <!-- Bottom Left Concentric Circles & Axis Lines -->
+                <circle cx="200" cy="880" r="140" />
+                <circle cx="200" cy="880" r="90" />
+                <circle cx="200" cy="880" r="40" />
+                <line x1="60" y1="880" x2="340" y2="880" />
+                <line x1="200" y1="740" x2="200" y2="1020" />
+
+                <!-- Framing Geometric Accents Behind Main Card Anchor -->
+                <rect x="360" y="180" width="1200" height="720" stroke-dasharray="12 12" />
+                <polygon points="960,120 1020,180 900,180" />
+                <polygon points="960,960 1020,900 900,900" />
+            </g>
+        </svg>
+    </div>
+
+    <!-- Main Content Box Layered Above Background -->
+    <div class="container">
+        <div class="badge">Next Post Dropping</div>
+        <h1>Meet &amp; STEM</h1>
+        <p class="subtitle">Something Is Coming In:</p>
+
+        <div class="countdown-grid">
+            <div class="time-box">
+                <div class="number scrambling" id="days">00</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="time-box">
+                <div class="number scrambling" id="hours">00</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="time-box">
+                <div class="number scrambling" id="minutes">00</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="time-box">
+                <div class="number scrambling" id="seconds">00</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="footer-text">MEET &bull; STEM &bull; DISCOVER</div>
+    </div>
+
+    <script>
+        // ============================================================
+        // FIX YOUR LAUNCH DATE HERE (ISO FORMAT)
+        // Example: "2026-09-01T18:00:00"
+        // ============================================================
+        const TARGET_DATE_STRING = "2026-09-01T18:00:00Z"; 
+        const targetDate = new Date(TARGET_DATE_STRING).getTime();
+
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#$@%&*!?';
+
+        const daysEl = document.getElementById('days');
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+
+        const elements = [daysEl, hoursEl, minutesEl, secondsEl];
+
+        function getRandomChar() {
+            return chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+
+        function getRandomString(length) {
+            let str = '';
+            for (let i = 0; i < length; i++) {
+                str += getRandomChar();
+            }
+            return str;
+        }
+
+        // Shuffle phase on every page visit
+        let scrambleInterval = setInterval(() => {
+            elements.forEach(el => {
+                el.innerText = getRandomString(2);
+            });
+        }, 60);
+
+        // Lock onto actual time after 2.5 seconds
+        setTimeout(() => {
+            clearInterval(scrambleInterval);
+            elements.forEach(el => el.classList.remove('scrambling'));
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        }, 2500);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                elements.forEach(el => el.innerText = '00');
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.innerText = days < 10 ? '0' + days : days;
+            hoursEl.innerText = hours < 10 ? '0' + hours : hours;
+            minutesEl.innerText = minutes < 10 ? '0' + minutes : minutes;
+            secondsEl.innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+    </script>
+</body>
+</html>
